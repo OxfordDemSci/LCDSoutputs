@@ -1,2 +1,3 @@
-# lcds_outputs
-A repo to scientometrically analyse LCDS outputs
+# LCDS Outputs
+
+A repo to scientometrically analyse LCDS outputs.
