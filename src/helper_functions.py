@@ -10,6 +10,12 @@ mpl.rc('text', usetex=True)
 mpl.rc('font', family='Times New Roman')
 
 
+def filter_abstracts(df):
+    print('We have {} rows of raw data'.format(len(df)))
+    df = df[df['Abstract'].notnull()]
+    print('After filtering, we have {} rows'.format(len(df)))
+    return df
+
 def get_grey_colour(word, font_size, position,
         orientation, random_state=None,
         **kwargs):
@@ -37,7 +43,7 @@ def make_word_array(df, top_val='all'):
     if top_val == 'all':
         top_val = len(freq_dist)
     print('Filtering top {} words for length, numbers, stopwords'.format(top_val))
-    for i, v in freq_dist[0:top_val].iteritems():
+    for i, v in freq_dist[0:top_val].items():
         if i.lower() not in STOPWORDS:
             if (len(i) > 3) and (i.isdigit() is False):
                 words_array.append(

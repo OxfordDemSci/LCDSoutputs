@@ -1,6 +1,7 @@
 from helper_functions import load_data, \
     make_word_array, \
     make_wc_object, \
+    filter_abstracts, \
     make_cloud
 
 
@@ -13,7 +14,7 @@ def main():
              'Access philosophy.')
     df = load_data('LCDSPublicationsYear1_4.xlsx',
                    'all_pubs')
-    df = df[df['Abstract'].notnull()]
+    df = filter_abstracts(df)
     words_array = make_word_array(df)
     wc = make_wc_object(words_array)
     make_cloud(wc, capt, 'five_year_report.svg')
